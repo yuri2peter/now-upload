@@ -20,7 +20,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <Box sx={{ margin: '0 auto', maxWidth: 560, padding: 3, paddingTop: 8 }}>
+    <Box sx={{ margin: '0 auto', maxWidth: 640, padding: 3, paddingTop: 8 }}>
       <Stack spacing={2}>
         <Typography variant="h3" align="center">
           Now Upload!

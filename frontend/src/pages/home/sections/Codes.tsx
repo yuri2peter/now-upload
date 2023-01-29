@@ -1,15 +1,27 @@
 import { Box, Card } from '@mui/material';
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
 import React from 'react';
 
 const Codes: React.FC = () => {
   return (
     <>
-      <Card sx={{ padding: 2 }}>
-        <pre style={{ fontSize: '12px', color: 'rgb(50,50,100)' }}>{code1}</pre>
-      </Card>
-      <Card sx={{ padding: 2 }}>
-        <pre style={{ fontSize: '12px', color: 'rgb(50,50,100)' }}>{code2}</pre>
-      </Card>
+      <CodeMirror
+        style={{ fontSize: '13px' }}
+        value={code1}
+        extensions={[javascript({ jsx: true, typescript: true })]}
+        theme="dark"
+        editable={false}
+        readOnly
+      />
+      <CodeMirror
+        style={{ fontSize: '13px' }}
+        value={code2}
+        extensions={[javascript({ jsx: true, typescript: true })]}
+        theme="dark"
+        editable={false}
+        readOnly
+      />
     </>
   );
 };
