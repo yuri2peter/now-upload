@@ -6,7 +6,7 @@ import { UploadResults } from './upload';
 const Results: React.FC<{ results: UploadResults }> = ({ results: r }) => {
   const url = SERVER_ORIGIN + '/' + r.newFilename;
   return (
-    <Card sx={{ padding: 2 }}>
+    <Card sx={{ padding: 2, boxShadow: 'none', border: '1px solid #dcdcdc' }}>
       <Link href={url}>
         <Typography variant="body2">{url}</Typography>
       </Link>

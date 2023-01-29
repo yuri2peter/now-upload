@@ -3,25 +3,24 @@ import CodeMirror from '@uiw/react-codemirror';
 import { javascript } from '@codemirror/lang-javascript';
 import React from 'react';
 
+const Code: React.FC<{ value: string }> = ({ value }) => {
+  return (
+    <CodeMirror
+      style={{ fontSize: '13px', borderRadius: '4px', overflow: 'hidden' }}
+      value={value}
+      extensions={[javascript({ jsx: true, typescript: true })]}
+      theme="dark"
+      editable={false}
+      readOnly
+    />
+  );
+};
+
 const Codes: React.FC = () => {
   return (
     <>
-      <CodeMirror
-        style={{ fontSize: '13px' }}
-        value={code1}
-        extensions={[javascript({ jsx: true, typescript: true })]}
-        theme="dark"
-        editable={false}
-        readOnly
-      />
-      <CodeMirror
-        style={{ fontSize: '13px' }}
-        value={code2}
-        extensions={[javascript({ jsx: true, typescript: true })]}
-        theme="dark"
-        editable={false}
-        readOnly
-      />
+      <Code value={code1} />
+      <Code value={code2} />
     </>
   );
 };
