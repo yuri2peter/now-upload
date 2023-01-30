@@ -1,4 +1,4 @@
-# now-update
+# now-upload
 
 这是一个简单的文件上传托管服务。
 
@@ -18,8 +18,8 @@
 # docker-compose.yml
 version: "3.8"
 services:
-  now-update:
-    image: "yuri2/now-update:v1"
+  now-upload:
+    image: "yuri2/now-upload:v1"
     restart: unless-stopped
     volumes:
       - ./volumes/resources:/app/server/html/resources

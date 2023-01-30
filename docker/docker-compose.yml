@@ -1,8 +1,8 @@
 # docker-compose.yml
 version: '3.8'
 services:
-  now-update:
-    image: "now-update:v1"
+  now-upload:
+    image: "now-upload:v1"
     restart: unless-stopped
     volumes:
       - ./volumes/resources:/app/server/html/resources
