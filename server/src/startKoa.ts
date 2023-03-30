@@ -35,7 +35,7 @@ export function startKoa() {
       // 上传文件
       formidable: {
         uploadDir: ROOT_PATH + '/html/resources',
-        maxFieldsSize: MAX_FILE_SIZE * 1024 * 1024, // 100MB
+        maxFileSize: MAX_FILE_SIZE * 1024 * 1024, // 100MB
         multiples: false,
         onFileBegin: (name, file) => {
           const { originalFilename } = file;

@@ -10,8 +10,12 @@ const Uploader: React.FC<{
   const [loading, setLoading] = useState(false);
   const handleUpload = useCallback(async () => {
     setLoading(true);
-    const results1 = await upload();
-    onChange(results1);
+    try {
+      const results1 = await upload();
+      onChange(results1);
+    } catch (err) {
+      alert('Error: Upload Failed.');
+    }
     setLoading(false);
   }, [onChange]);
   return (
