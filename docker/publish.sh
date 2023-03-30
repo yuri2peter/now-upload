@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker tag now-upload:v1 yuri2/now-upload:v1
-docker push yuri2/now-upload:v1
+docker tag now-upload:v2 yuri2/now-upload:v2
+docker push yuri2/now-upload:v2
