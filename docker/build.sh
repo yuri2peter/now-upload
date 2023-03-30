@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -f ./Dockerfile -t now-upload:v1 ../
+docker build -f ./Dockerfile -t now-upload:v2 ../

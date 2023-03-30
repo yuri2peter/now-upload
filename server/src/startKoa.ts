@@ -5,7 +5,7 @@ import http from 'http';
 import CSRF from 'koa-csrf';
 import staticServer from 'koa-static';
 import cors from '@koa/cors';
-import { ROOT_PATH } from './configs';
+import { MAX_FILE_SIZE, ROOT_PATH } from './configs';
 import { main as controller } from './controllers';
 import path from 'path';
 import { nanoid } from 'nanoid';
@@ -35,13 +35,15 @@ export function startKoa() {
       // 上传文件
       formidable: {
         uploadDir: ROOT_PATH + '/html/resources',
-        maxFieldsSize: 100 * 1024 * 1024, // 100MB
+        maxFieldsSize: MAX_FILE_SIZE * 1024 * 1024, // 100MB
         multiples: false,
         onFileBegin: (name, file) => {
           const { originalFilename } = file;
-          const ext = path.extname(originalFilename || '');
-          // 使用随机文件名
-          const newFilename = nanoid() + ext;
+          const fileName = (originalFilename || '').replace(/[\/\\]/g, '');
+          const ext = path.extname(fileName);
+          // 使用原始名+随机文件名
+          const newFilename =
+            path.basename(fileName, ext) + '.' + nanoid() + ext;
           file.newFilename = newFilename;
           file.filepath = ROOT_PATH + '/html/resources/' + newFilename;
         },

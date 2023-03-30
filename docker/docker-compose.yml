@@ -2,7 +2,9 @@
 version: '3.8'
 services:
   now-upload:
-    image: "now-upload:v1"
+    image: "now-upload:v2"
+    environment:
+      - MAX_FILE_SIZE=100
     restart: unless-stopped
     volumes:
       - ./volumes/resources:/app/server/html/resources
