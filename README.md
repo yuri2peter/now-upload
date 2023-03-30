@@ -2,7 +2,7 @@
 
 这是一个简单的文件上传托管服务。
 
-![app.png](./docs/assets/app.png)
+![app.png](https://raw.githubusercontent.com/yuri2peter/now-upload/main/docs/assets/app.png)
 
 ## Quick Start
 
