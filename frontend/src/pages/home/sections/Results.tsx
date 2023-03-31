@@ -1,7 +1,7 @@
 import { Card, Link, Typography } from '@mui/material';
 import React from 'react';
+import { UploadResults } from 'src/components/NowUploader';
 import { SERVER_ORIGIN } from 'src/configs';
-import { UploadResults } from './upload';
 
 const Results: React.FC<{ results: UploadResults }> = ({ results: r }) => {
   const url = SERVER_ORIGIN + '/' + r.newFilename;
