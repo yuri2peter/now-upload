@@ -1,10 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
-import Uploader from './sections/Uploader';
 import { SERVER_ORIGIN } from 'src/configs';
-import { UploadResults } from './sections/upload';
 import Results from './sections/Results';
 import Codes from './sections/Codes';
+import NowUploader, { UploadResults } from 'src/components/NowUploader';
 
 const HomePage = () => {
   const [showCodes, setShowCodes] = useState(false);
@@ -26,7 +25,7 @@ const HomePage = () => {
           Now Upload!
         </Typography>
         <Box>
-          <Uploader value={value} onChange={handleChange} />
+          <NowUploader value={value} onChange={handleChange} />
         </Box>
         {results && <Results results={results} />}
         {showCodes ? (

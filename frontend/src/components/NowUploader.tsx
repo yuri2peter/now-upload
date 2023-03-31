@@ -1,28 +1,3 @@
-import CodeMirror from '@uiw/react-codemirror';
-import { javascript } from '@codemirror/lang-javascript';
-import React from 'react';
-
-const Code: React.FC<{ value: string }> = ({ value }) => {
-  return (
-    <CodeMirror
-      style={{ fontSize: '13px', borderRadius: '4px', overflow: 'hidden' }}
-      value={value}
-      extensions={[javascript({ jsx: true, typescript: true })]}
-      theme="dark"
-      editable={false}
-      readOnly
-    />
-  );
-};
-
-const Codes: React.FC = () => {
-  return (
-    <>
-      <Code value={code1} />
-    </>
-  );
-};
-const code1 = `// NowUploader.tsx
 // Importing necessary libraries
 import { AxiosInstance } from 'axios';
 import React, { ComponentPropsWithoutRef, useCallback, useState } from 'react';
@@ -188,7 +163,3 @@ function upload(
     elInput.click();
   });
 }
-
-`;
-
-export default Codes;
