@@ -9,7 +9,8 @@ const HomePage = () => {
   const [showCodes, setShowCodes] = useState(false);
   const [value, setValue] = useState('');
   const [results, setResults] = useState<null | UploadResults>(null);
-  const handleChange = useCallback((v: UploadResults | string) => {
+  const handleChange = useCallback(setValue, []);
+  const handleUpload = useCallback((v: UploadResults) => {
     if (typeof v === 'string') {
       setValue(v);
     } else {
@@ -17,7 +18,6 @@ const HomePage = () => {
       setValue(SERVER_ORIGIN + '/' + v.newFilename);
     }
   }, []);
-
   return (
     <Box sx={{ margin: '0 auto', maxWidth: 640, padding: 3, paddingTop: 8 }}>
       <Stack spacing={2}>
@@ -25,7 +25,12 @@ const HomePage = () => {
           Now Upload!
         </Typography>
         <Box>
-          <NowUploader value={value} onChange={handleChange} />
+          <NowUploader
+            value={value}
+            onChange={handleChange}
+            onUploadSucceed={handleUpload}
+            disableAutoFill
+          />
         </Box>
         {results && <Results results={results} />}
         {showCodes ? (
