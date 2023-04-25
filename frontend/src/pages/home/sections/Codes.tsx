@@ -9,7 +9,7 @@ const Code: React.FC<{ value: string }> = ({ value }) => {
         fontSize: '13px',
         borderRadius: '4px',
         overflow: 'auto',
-        maxHeight: 'calc(100vh - 400px)',
+        maxHeight: '100%',
       }}
       value={value}
       extensions={[javascript({ jsx: true, typescript: true })]}

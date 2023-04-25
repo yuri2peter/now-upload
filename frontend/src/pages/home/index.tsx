@@ -4,6 +4,7 @@ import { SERVER_ORIGIN } from 'src/configs';
 import Results from './sections/Results';
 import Codes from './sections/Codes';
 import NowUploader, { UploadResults } from 'src/components/NowUploader';
+import SizerBox from 'src/components/SizerBox';
 
 const HomePage = () => {
   const [showCodes, setShowCodes] = useState(false);
@@ -42,7 +43,9 @@ const HomePage = () => {
         </Box>
         {results && <Results results={results} />}
         {showCodes ? (
-          <Codes />
+          <SizerBox>
+            <Codes />
+          </SizerBox>
         ) : (
           <>
             <Button
