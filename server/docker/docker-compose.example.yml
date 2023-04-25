@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   now-upload:
-    image: "now-upload:v3"
+    image: "yuri2/now-upload:v3"
     environment:
       - MAX_FILE_SIZE=100
     restart: unless-stopped
