@@ -2,37 +2,56 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import bodyPaser from 'koa-body';
 import http from 'http';
+import path from 'path';
+import fs from 'fs-extra';
 import CSRF from 'koa-csrf';
+import koaPushState from 'koa-push';
 import staticServer from 'koa-static';
 import cors from '@koa/cors';
 import { MAX_FILE_SIZE, ROOT_PATH } from './configs';
-import { main as controller } from './controllers';
-import path from 'path';
+import { main as controller } from './controllers/index';
 import { nanoid } from 'nanoid';
 
+const USE_SPA = true;
+
 export function startKoa() {
-  const router = new Router();
-  controller(router);
   const app = new Koa();
+  applyApp(app);
+  return http.createServer(app.callback());
+}
+
+function applyApp(app: Koa) {
   app.use(cors());
   app.use(new CSRF());
+
+  const htmlFrontendPath = path.join(ROOT_PATH, 'html/frontend');
+  const htmlResourcesPath = path.join(ROOT_PATH, 'html/resources');
+  fs.ensureDirSync(htmlFrontendPath);
+  fs.ensureDirSync(htmlResourcesPath);
+
+  if (USE_SPA) {
+    app.use(koaPushState(htmlFrontendPath + '/index.html'));
+  }
+
   app.use(
-    staticServer(ROOT_PATH + '/html/frontend', {
-      maxAge: 30 * 24 * 3600 * 1000, // 30天的强缓存
-      immutable: true, // 声明资源是不会变更的可以永久缓存
+    staticServer(htmlFrontendPath, {
+      maxAge: 30 * 24 * 3600 * 1000,
+      immutable: true,
     })
   );
+
   app.use(
-    staticServer(ROOT_PATH + '/html/resources', {
-      maxAge: 30 * 24 * 3600 * 1000, // 30天的强缓存
-      immutable: true, // 声明资源是不会变更的可以永久缓存
+    staticServer(htmlResourcesPath, {
+      maxAge: 30 * 24 * 3600 * 1000,
+      immutable: true,
     })
   );
+
+  // body解析，文件上传
   app.use(
     bodyPaser({
       jsonLimit: '100mb',
       multipart: true,
-      // 上传文件
       formidable: {
         uploadDir: ROOT_PATH + '/html/resources',
         maxFileSize: MAX_FILE_SIZE * 1024 * 1024, // 100MB
@@ -50,6 +69,9 @@ export function startKoa() {
       },
     })
   );
+
+  // 路由
+  const router = new Router();
   app.use(router.routes());
-  return http.createServer(app.callback());
+  controller(router);
 }

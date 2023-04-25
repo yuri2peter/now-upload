@@ -19,7 +19,7 @@
 version: "3.8"
 services:
   now-upload:
-    image: "yuri2/now-upload:v2"
+    image: "yuri2/now-upload:v3"
     environment:
       - MAX_FILE_SIZE=100
     restart: unless-stopped
@@ -47,5 +47,6 @@ services:
 
 ## 版本记录
 
+- v3. 打包服务端代码，大幅减少 docker 镜像大小
 - v2. 文件名改为原始名+随机文件名；上传文件的大小上限改为可配置
 - v1. 实现预期功能

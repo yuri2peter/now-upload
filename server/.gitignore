@@ -2,3 +2,7 @@
 /html
 /data
 .env
+/*-win32-x64
+/dist
+docker/docker-compose.yml
+docker/volumes

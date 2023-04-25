@@ -5,7 +5,12 @@ import React from 'react';
 const Code: React.FC<{ value: string }> = ({ value }) => {
   return (
     <CodeMirror
-      style={{ fontSize: '13px', borderRadius: '4px', overflow: 'hidden' }}
+      style={{
+        fontSize: '13px',
+        borderRadius: '4px',
+        overflow: 'auto',
+        maxHeight: 'calc(100vh - 400px)',
+      }}
       value={value}
       extensions={[javascript({ jsx: true, typescript: true })]}
       theme="dark"
