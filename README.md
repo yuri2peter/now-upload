@@ -9,7 +9,7 @@
 1. 启动容器，开放 3000 端口，挂载 `/app/server/html/resources` 目录
 2. 浏览器访问 `http://SERVER_HOST:3000`
 3. 点击上传按钮后可立即上传文件，并获得下载链接
-4. 点击`SHOW DEMO CODE`查看前端对接代码 demo
+4. 点击`SHOW DEMO CODE`查看前端对接代码 [demo:NowUploader.tsx](https://github.com/yuri2peter/now-upload/blob/main/frontend/src/components/NowUploader.tsx)
 5. 更多信息请前往 [[GITHUB] yuri2peter/now-upload](https://github.com/yuri2peter/now-upload)
 
 ## Docker Compose Example
