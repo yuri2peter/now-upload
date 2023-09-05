@@ -24,7 +24,7 @@ services:
       - MAX_FILE_SIZE=100
     restart: unless-stopped
     volumes:
-      - ./volumes/resources:/app/server/html/resources
+      - ./volumes/resources:/app/html/resources
     ports:
       - 3000:3000
 ```
